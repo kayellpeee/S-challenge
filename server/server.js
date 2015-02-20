@@ -1,8 +1,8 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 
-var routes = require('./routes.js');
-var utils = require('./utils.js');
+var routes = require('./config/routes.js');
+var utils = require('./config/utils.js');
 
 var app = express();
 app.use(bodyParser.json());
