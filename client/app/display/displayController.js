@@ -8,17 +8,18 @@ angular.module('slack.display', [])
     $scope.$digest();
   }, 1500)
 
+  $scope.tags = {};
+
   var countTags = function(HTMLString){
-    var tags = {};
     var tagname;
     var grabTagName = false;
 
     for( var i = 0; i < HTMLString.length; i++ ){
       if( HTMLString[i] === ">" || HTMLString[i] === " " ){
-        if( tags[tagname] ){
-          tags[tagname]++;
+        if( $scope.tags[tagname] ){
+          $scope.tags[tagname]++;
         }else if( tagname !== undefined ){
-          tags[tagname] = 1;
+          $scope.tags[tagname] = 1;
         }
         grabTagName = false;
       }
@@ -30,8 +31,6 @@ angular.module('slack.display', [])
         grabTagName = true;
       }
     }
-    console.log("HERE WE GO!YAHOOO!");
-    console.log(tags);
   };
 
 });

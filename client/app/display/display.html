@@ -1,7 +1,11 @@
 <div>
-  <div class="summary">Summary here</div>
+  <div class="summary">
+    <div>tagname: count</div>
+    <div ng-repeat="(tagname, count) in tags">
+      {{tagname}}:  {{count}}
+    </div>
+  </div>
   <div class="source">
-    HTML source code here
-    {{data.source}}
+    <textarea ng-model="data.source"></textarea>
   </div>
 </div>
