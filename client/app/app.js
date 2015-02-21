@@ -1,4 +1,7 @@
-angular.module('slack', ['ui.router'])
+angular.module('slack', [
+  'slack.fetch',
+  'ui.router'
+  ])
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/fetch");
 
@@ -6,11 +9,11 @@ angular.module('slack', ['ui.router'])
     .state('fetch', {
       url: '/fetch',
       controller: 'FetchController',
-      templateUrl: 'fetch/fetch.html'
+      templateUrl: 'app/fetch/fetch.html'
     })
     .state('display', {
       url: '/display',
       controller: 'DisplayController',
-      templateUrl: 'display/display.html'
+      templateUrl: 'app/display/display.html'
     });
 });
