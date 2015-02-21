@@ -1,5 +1,6 @@
 angular.module('slack', [
   'slack.fetch',
+  'slack.display',
   'ui.router'
   ])
 .config(function($stateProvider, $urlRouterProvider){
