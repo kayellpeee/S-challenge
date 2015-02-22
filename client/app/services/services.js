@@ -1,23 +1,19 @@
 angular.module('slack.services', [])
-.factory('Source', function($http){
-  var html = {};
-
-  var getHTMLSource = function(data){
+.factory('Storage', function($http){
+  var data = {};
+  return { data: data };
+})
+.factory('UpdateStorage', function(Storage, $http, $location){
+  var newHTMLSource = function(data){
     return $http({
       method: 'POST',
       url: '/fetch',
       data: data
     }).then(function(response){
-      html = response.data;
+      Storage.data = response.data;
+      $location.path("/display");
     });
   };
 
-  var displaySource = function(){
-    return html;
-  };
-
-  return {
-    getHTMLSource: getHTMLSource,
-    displaySource: displaySource
-  };
+  return { newHTMLSource: newHTMLSource };
 });

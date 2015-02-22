@@ -1,12 +1,6 @@
 angular.module('slack.display', [])
-.controller('DisplayController', function($scope, Source){
-  $scope.data;
-
-  setTimeout(function(){
-    $scope.data = Source.displaySource();
-    countTags($scope.data.source);
-    $scope.$digest();
-  }, 1500)
+.controller('DisplayController', function($scope, Storage){
+  $scope.data = Storage.data;
 
   $scope.tags = {};
 
@@ -32,5 +26,7 @@ angular.module('slack.display', [])
       }
     }
   };
+
+  countTags($scope.data.source);
 
 });

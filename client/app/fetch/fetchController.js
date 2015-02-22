@@ -1,10 +1,9 @@
 angular.module('slack.fetch', [])
-.controller('FetchController', function($scope, $location, Source){
+.controller('FetchController', function($scope, $location, UpdateStorage){
   $scope.data = {};
 
   $scope.getSource = function(){
-    Source.getHTMLSource($scope.data);
-    $location.path("/display");
+    UpdateStorage.newHTMLSource($scope.data);
   };
 
 });
