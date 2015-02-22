@@ -4,6 +4,9 @@ pre {
 .fetch {
   text-align: center;
 }
+.highlight {
+  background-color: #FFFF00;
+}
 .summary {
   text-align: center;
 }
