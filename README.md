@@ -1,8 +1,8 @@
 Backend
 
 ##/fetch
-  - √ POST -> send back JSON of source page
-  - √ take valid URL & query that page (similar to how curl does)
+  - POST -> send back JSON of source page
+  - take valid URL & query that page (similar to how curl does)
 
 Frontend
   - basic angular app
@@ -24,12 +24,6 @@ Frontend
 
 ~~~~~~~~~~~~~~
 
-TODO:
-  - add highlighting & clicking functionality
-  - 
-  - (1 or 2 other things I'm sure)
-  - 
-  - 
+TODO: 
   - comment (<--------!!!!)
-  - (style (eh))
   - (deploy)
