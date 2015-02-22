@@ -26,7 +26,6 @@ Frontend
 
 TODO:
   - add highlighting & clicking functionality
-  - change format of display (not in text area)
   - 
   - (1 or 2 other things I'm sure)
   - 

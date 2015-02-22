@@ -1,7 +1,7 @@
 <div>
   <div class="summary">
     <div>tagname: count</div>
-    <div ng-repeat="(tagname, count) in tags">
+    <div class="clickable {{tagname}}" ng-repeat="(tagname, count) in tags">
       {{tagname}}:  {{count}}
     </div>
   </div>
