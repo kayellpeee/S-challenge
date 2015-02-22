@@ -1,7 +1,9 @@
-<div>
+<!-- view for main display -->
+<div class = "display">
   <div class="summary">
     <div>tagname: count</div>
-    <div class="{{tagname}}" ng-repeat="(tagname, count) in tags" ng-click="highlight(tagname)">
+    <div class="{{tagname}}" ng-repeat="(tagname, count) in tags"
+      ng-click="highlight(tagname)">
       {{tagname}}:  {{count}}
     </div>
   </div>

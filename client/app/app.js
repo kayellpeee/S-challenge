@@ -7,6 +7,7 @@ angular.module('slack', [
 .config(function($stateProvider, $urlRouterProvider){
   $urlRouterProvider.otherwise("/fetch");
 
+  // 2 views - one for user input, the other to display the summary/source code
   $stateProvider
     .state('fetch', {
       url: '/fetch',
