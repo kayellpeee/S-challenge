@@ -2,6 +2,7 @@ var request = require('request');
 
 var routes = {};
 
+// when user posts to /fetch get HTML source from that page with request
 routes.fetch = function(req, res, next){
   if( req.body.url === undefined ){
     next(new Error("Please provide URL"));
