@@ -41,7 +41,13 @@ angular.module('slack.services', [])
           searchForClosingTagIndex = false;
           closingTagIndex = i;
           templateString += '<pre class="' + tagname + '">'
-            + HTMLString.slice(openingTagIndex, closingTagIndex)
+            + '&lt;'
+            + HTMLString.slice(openingTagIndex + 1,
+              closingTagIndex - tagname.length - 2)
+            + '&lt;'
+            + HTMLString.slice(closingTagIndex - tagname.length - 1,
+              closingTagIndex)
+            + '&gt;'
             + '</pre>'
         }
       }
