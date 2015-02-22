@@ -40,15 +40,10 @@ angular.module('slack.services', [])
         if( HTMLString[i] === ">" ){
           searchForClosingTagIndex = false;
           closingTagIndex = i;
+          var body = HTMLString.slice(openingTagIndex, closingTagIndex + 1);
           templateString += '<pre class="' + tagname + '">'
-            + '&lt;'
-            + HTMLString.slice(openingTagIndex + 1,
-              closingTagIndex - tagname.length - 2)
-            + '&lt;'
-            + HTMLString.slice(closingTagIndex - tagname.length - 1,
-              closingTagIndex)
-            + '&gt;'
-            + '</pre>'
+            + body.replace(/</g, '&lt;').replace(/>/g, '&gt;')
+            + '</pre>';
         }
       }
       if( grabTagName ){
