@@ -25,6 +25,7 @@ angular.module('slack.services', [])
     var tags = {};
     var tagname;
     var grabTagName = false;
+    var searchForClosingTagIndex = false;
 
     for( var i = 0; i < HTMLString.length; i++ ){
       if( HTMLString[i] === ">" || HTMLString[i] === " " ){
@@ -33,23 +34,28 @@ angular.module('slack.services', [])
         }else if( tagname !== undefined ){
           tags[tagname] = 1;
         }
-        if( HTMLString[i - 1] === "/" ){
+        grabTagName = false;
+      }
+      if( searchForClosingTagIndex ){
+        if( HTMLString[i] === ">" ){
+          searchForClosingTagIndex = false;
           closingTagIndex = i;
           templateString += '<pre class="' + tagname + '">'
             + HTMLString.slice(openingTagIndex, closingTagIndex)
             + '</pre>'
         }
-        grabTagName = false;
       }
       if( grabTagName ){
         tagname += HTMLString[i];
       }
       if( HTMLString[i] === "<" ){
-        if( HTMLString[i + 1] !== "/" && HTMLString[i + 1] !== "!" ){
+        if( HTMLString[i + 1] === "/" ){
+          searchForClosingTagIndex = true;
+        }else if( HTMLString[i + 1] !== "!" ){
           tagname = "";
           grabTagName = true;
+          openingTagIndex = i;
         }
-        openingTagIndex = i;
       }
     }
     return {
