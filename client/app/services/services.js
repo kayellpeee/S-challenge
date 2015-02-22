@@ -16,4 +16,47 @@ angular.module('slack.services', [])
   };
 
   return { newHTMLSource: newHTMLSource };
+})
+.factory('Parser', function(){
+  var parseHTML = function(HTMLString){
+    var templateString = "";
+    var openingTagIndex;
+    var closingTagIndex;
+    var tags = {};
+    var tagname;
+    var grabTagName = false;
+
+    for( var i = 0; i < HTMLString.length; i++ ){
+      if( HTMLString[i] === ">" || HTMLString[i] === " " ){
+        if( tags[tagname] ){
+          tags[tagname]++;
+        }else if( tagname !== undefined ){
+          tags[tagname] = 1;
+        }
+        if( HTMLString[i - 1] === "/" ){
+          closingTagIndex = i;
+          templateString += '<pre class="' + tagname + '">'
+            + HTMLString.slice(openingTagIndex, closingTagIndex)
+            + '</pre>'
+        }
+        grabTagName = false;
+      }
+      if( grabTagName ){
+        tagname += HTMLString[i];
+      }
+      if( HTMLString[i] === "<" ){
+        if( HTMLString[i + 1] !== "/" && HTMLString[i + 1] !== "!" ){
+          tagname = "";
+          grabTagName = true;
+        }
+        openingTagIndex = i;
+      }
+    }
+    return {
+      tags: tags,
+      templateString: templateString
+    };
+  };
+
+  return { parseHTML: parseHTML };
 });
